@@ -83,7 +83,8 @@ jobs:
           node -e '
             const crypto = require("crypto"), fs = require("fs");
             const key = process.env.ROALT_UPDATE_KEY;
-            if (!key) { console.log("::error::the ROALT_UPDATE_KEY secret is not set: the installer cannot be signed"); process.exit(1); }
+            // A fork has no ROALT_UPDATE_KEY: release without the updater signature.
+            if (!key) { console.log("::warning::the ROALT_UPDATE_KEY secret is not set: no updater signature"); process.exit(0); }
             const name = `RoALT-Setup-${process.env.VERSION}.exe`, exe = `dist-installer/${name}`;
             const data = Buffer.concat([Buffer.from(name + "\n"), fs.readFileSync(exe)]);
             const sig = crypto.sign("sha256", data, { key, dsaEncoding: "ieee-p1363" });
@@ -127,11 +128,12 @@ jobs:
         run: |
           sha256sum -- * > SHA256SUMS.txt
           cat SHA256SUMS.txt
-          test -s "RoALT-Setup-$VERSION.exe.sig" || { echo "::error::RoALT-Setup-$VERSION.exe.sig is missing"; exit 1; }
+          sig_note="RoALT-Setup-$VERSION.exe.sig is the signature RoALT's built-in updater checks before it runs the installer."
+          test -s "RoALT-Setup-$VERSION.exe.sig" || sig_note="No updater signature: install by hand."
           signing="No Authenticode signature yet: SmartScreen warns."
           if [ "$SIGNED" = true ]; then signing="Code signed."; fi
           cat > ../notes.md <<EOF
-          $signing The SHA-256 sums are below and in SHA256SUMS.txt; RoALT-Setup-$VERSION.exe.sig is the signature RoALT's built-in updater checks before it runs the installer.
+          $signing The SHA-256 sums are below and in SHA256SUMS.txt; $sig_note
 
           - **Windows** 10 1809 or later, or Windows 11, x64: RoALT-Setup-$VERSION.exe. SmartScreen warns on first run: More info → Run anyway.
           - Needs the Microsoft Edge WebView2 Runtime (Windows 11 has it). Setup checks, and offers Microsoft's download when it is missing.

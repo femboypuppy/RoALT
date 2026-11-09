@@ -137,11 +137,6 @@ selfUpdate: boolean,
  */
 discordPresence: boolean, 
 /**
- * Ping RoALT's online counter every 2 minutes with a random id made once per launch, and
- * show how many people use RoALT beside the Discord button (`online`). Off: nothing is sent.
- */
-onlineCount: boolean, 
-/**
  * While counting an account's limiteds, download Rolimons' public item list (`rolimons`;
  * api.rolimons.com, at most every 30 minutes) and add its value, demand and trend. No user id,
  * name or cookie is sent. Off by default: Rolimons isn't Roblox.

@@ -284,9 +284,6 @@ pub struct Settings {
     /// Discord rich presence through the Discord app on this PC (`rpc`): "Playing RoALT" with
     /// the game and how many alts run.
     pub discord_presence: bool,
-    /// Ping RoALT's online counter every 2 minutes with a random id made once per launch, and
-    /// show how many people use RoALT beside the Discord button (`online`). Off: nothing is sent.
-    pub online_count: bool,
     /// While counting an account's limiteds, download Rolimons' public item list (`rolimons`;
     /// api.rolimons.com, at most every 30 minutes) and add its value, demand and trend. No user id,
     /// name or cookie is sent. Off by default: Rolimons isn't Roblox.
@@ -533,7 +530,6 @@ impl Default for Settings {
             auto_update: false,
             self_update: true,
             discord_presence: true,
-            online_count: true,
             rolimons_values: false,
             minimize_on_launch: false,
 panic_hotkey: String::new(),
@@ -622,8 +618,6 @@ pub struct SettingsPatch {
     pub self_update: Option<bool>,
     #[ts(optional)]
     pub discord_presence: Option<bool>,
-    #[ts(optional)]
-    pub online_count: Option<bool>,
     #[ts(optional)]
     pub rolimons_values: Option<bool>,
     #[ts(optional)]

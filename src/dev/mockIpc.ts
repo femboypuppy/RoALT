@@ -78,7 +78,7 @@ let settings: Settings = {
   adaptive: { enabled: false, background: { cpuCap: 25, eco: true, trimEveryMin: null, affinity: null } }, bandwidthKbps: 0,
   antiAfk: { enabled: false, intervalMin: 15 },
   discord: { crash: true, hang: true, memRestart: true, disconnect: true, restart: true, breaker: true, batchDone: true, launch: false, statusEveryMin: 0, ping: "" },
-  autoUpdate: false, selfUpdate: true, tabLayout: "top", discordPresence: true, onlineCount: true, minimizeOnLaunch: false, microWidth: 320, microHeight: 240, tinyOnLaunch: false, panicHotkey: "", cleanLogs: false, fpsCap: 0, lowGraphics: true, skipSplash: false, protectMain: true, muteOnLaunch: false, windowLayout: "off", lighterRendering: true, renderFlags: { msaa: "x1", texture: "lowest", mode: "default", graySky: false, noGrass: true, lowestFrm: true, pauseVoxelizer: false },
+  autoUpdate: false, selfUpdate: true, tabLayout: "top", discordPresence: true,minimizeOnLaunch: false, microWidth: 320, microHeight: 240, tinyOnLaunch: false, panicHotkey: "", cleanLogs: false, fpsCap: 0, lowGraphics: true, skipSplash: false, protectMain: true, muteOnLaunch: false, windowLayout: "off", lighterRendering: true, renderFlags: { msaa: "x1", texture: "lowest", mode: "default", graySky: false, noGrass: true, lowestFrm: true, pauseVoxelizer: false },
   customFlags: {}, customFlagsScope: "global", lockPurchases: true, rolimonsValues: false,
   allowPublicNetworks: true, language: "",
 };
@@ -1373,8 +1373,6 @@ async function handle(cmd: string, args: Args): Promise<unknown> {
         failed: [],
       };
     }
-    case "online_ping":
-      return !DEMO && settings.onlineCount ? { online: 1284, playing: 5120 } : null;
     case "self_update_status":
       return { current: APP_VERSION, available: appUpdate };
     case "self_update_check":

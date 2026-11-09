@@ -43,7 +43,6 @@ import type { Limits } from "./bindings/Limits";
 import type { LogsCleaned } from "./bindings/LogsCleaned";
 import type { MultiInstanceStatus } from "./bindings/MultiInstanceStatus";
 import type { Notice } from "./bindings/Notice";
-import type { Online } from "./bindings/Online";
 import type { ParsedInput } from "./bindings/ParsedInput";
 import type { PrivateServerPage } from "./bindings/PrivateServerPage";
 import type { PrivateServerBuy } from "./bindings/PrivateServerBuy";
@@ -328,7 +327,6 @@ export const api = {
   robloxInstall: () => invoke<RobloxClient>("roblox_install"),
   /** RoALT's version and the newer release the last check found (no network). */
   news: () => invoke<News>("news"),
-  onlinePing: () => invoke<Online | null>("online_ping"),
   selfUpdateStatus: () => invoke<AppUpdate>("self_update_status"),
   /** Asks GitHub for a newer RoALT now. */
   selfUpdateCheck: () => invoke<AppUpdate>("self_update_check"),

@@ -16,7 +16,6 @@ mod performance;
 mod roblox_api;
 mod rpc;
 mod news;
-mod online;
 mod rolimons;
 mod self_update;
 mod splash;
@@ -736,7 +735,6 @@ fn main() {
             commands::roblox_client,
             commands::roblox_install,
             commands::news,
-            commands::online_ping,
             commands::self_update_status,
             commands::self_update_check,
             commands::self_update_install,

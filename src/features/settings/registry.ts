@@ -184,7 +184,6 @@ const SETTINGS_ENTRIES: readonly Entry[] = [
   { id: "browserData", place: data, label: "settings.browserData", hint: "settings.browserDataShort", more: "settings.browserDataHint", control: ACTION, aliases: ["captcha", "webview", "reset"] },
 
   { id: "selfUpdate", place: about, label: "settings.selfUpdate", more: "settings.selfUpdateHint", field: "selfUpdate", control: CUSTOM, aliases: ["update", "github", "version"] },
-  { id: "onlineCount", place: about, label: "settings.onlineCount", more: "settings.onlineCountHint", field: "onlineCount", control: SWITCH, aliases: ["online", "users", "counter", "telemetry", "privacy"] },
   {
     id: "rolimons", place: about, label: "settings.rolimons", hint: "settings.rolimonsShort", more: "settings.rolimonsHint", field: "rolimonsValues",
     control: SWITCH, invalidates: ["values"], aliases: ["rolimons", "value", "rap", "limiteds", "trading", "privacy"],
